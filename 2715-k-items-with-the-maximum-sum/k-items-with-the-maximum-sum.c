@@ -1,3 +1,9 @@
 int kItemsWithMaximumSum(int numOnes, int numZeros, int numNegOnes, int k) {
-    return fmin(k,numOnes) - fmax(0,k-numZeros-numOnes);
+    if(k<=numOnes){
+        return k;
+    }
+    else if (k<=numZeros+numOnes){
+        return numOnes;
+    }
+    return numOnes-(k-(numOnes+numZeros));
 }
