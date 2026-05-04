@@ -4,8 +4,12 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        g=len(nums)-1
-        for i in range(len(nums)-2,-1,-1):
-            if nums[i]+i >= g:
-                g=i
-        return g==0
+        max_reach = 0   # farthest index we can reach
+    
+        for i in range(len(nums)):
+            if i > max_reach:
+                return False   # we cannot even reach this index
+        
+            max_reach = max(max_reach, i + nums[i])
+    
+        return True   # we can reach the last index
