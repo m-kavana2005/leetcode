@@ -5,15 +5,13 @@ class Solution(object):
         :type cost: List[int]
         :rtype: int
         """
-        tot_gas=sum(gas)
-        tot_cost=sum(cost)
-        if tot_gas<tot_cost:
+        if sum(gas)<sum(cost):
             return -1
-        cur_gas=0
-        start=0
+        g=0
+        sidx=0
         for i in range(len(gas)):
-            cur_gas+=gas[i]-cost[i]
-            if cur_gas<0:
-                start=i+1
-                cur_gas=0
-        return start
+            g = g+gas[i]-cost[i]
+            if g<0:
+                g=0
+                sidx=i+1
+        return sidx
